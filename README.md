@@ -38,28 +38,27 @@ public function emailUpdated(User $user, $oldValue, $newValue)
 ```
 
 ### Available Events
-All default Laravel Events are supported, please not some events will only receive on value.
+All default Laravel Events are supported, please not some events will only receive one value.
 See below for full list of events and arguments.
 
 | Method                | Arguments Received                        |
 |-----------------------|-------------------------------------------|
 | yourPropertyCreating  | (Model $yourModel, $value)                |
 | yourPropertyCreated   | (Model $yourModel, $value)                |
-| yourPropertyUpdating  | (Model $yourModel, $oldValue, $newValue)` |
-| yourPropertyUpdated   | (Model $yourModel, $oldValue, $newValue)` |
-| yourPropertySaving    | (Model $yourModel, $oldValue, $newValue)` |
-| yourPropertySaved     | (Model $yourModel, $oldValue, $newValue)` |
+| yourPropertyUpdating  | (Model $yourModel, $oldValue, $newValue)  |
+| yourPropertyUpdated   | (Model $yourModel, $oldValue, $newValue)  |
+| yourPropertySaving    | (Model $yourModel, $oldValue, $newValue)  |
+| yourPropertySaved     | (Model $yourModel, $oldValue, $newValue)  |
 | yourPropertyDeleting  | (Model $yourModel, $value)                |
 | yourPropertyDeleted   | (Model $yourModel, $value)                |
 | yourPropertyRestoring | (Model $yourModel, $value)                |
 | yourPropertyRestored  | (Model $yourModel, $value)                |
-| yourPropertyCreating  | (Model $yourModel, $value)                |
 
 ### Caveats
-As per the Laravel docs the `Saving` and `Saved` events fire along
+As per the Laravel docs the `Saving|Saved` events fire along
 side `Creating|Created` and `Updating|Updated` methods.
  
-With this in mind when creating a Model the `Saving|Saved` event will receive
+With this in mind when **creating** a Model the `Saving|Saved` event will receive
 both `$oldValue` and `$newValue` arguments but they will have the
 **same** value.
 
