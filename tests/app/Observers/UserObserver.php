@@ -6,7 +6,15 @@ use HaganJones\LaravelObserveProperties\Tests\App\User;
 
 class UserObserver
 {
-    use ObserveProperties;
+    use ObserveProperties {
+        updating as updatingProperties;
+    }
+
+    public function updating(User $user) {
+        // doing stuff
+
+        $this->updatingProperties($user);
+    }
 
     public function emailCreating(User $user, $value)
     {
