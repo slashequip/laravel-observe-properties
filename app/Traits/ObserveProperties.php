@@ -2,6 +2,7 @@
 namespace HaganJones\LaravelObserveProperties;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 trait ObserveProperties
 {
@@ -13,7 +14,7 @@ trait ObserveProperties
     public function creating(Model $model)
     {
         return $this->callOnClean($model, function ($attribute) use ($model) {
-            $method = camel_case($attribute) . 'Creating';
+            $method = Str::camel($attribute) . 'Creating';
             return $this->attemptCall($method, $model, $model->{$attribute});
         });
     }
@@ -26,7 +27,7 @@ trait ObserveProperties
     public function created(Model $model)
     {
         return $this->callOnClean($model, function ($attribute) use ($model) {
-            $method = camel_case($attribute) . 'Created';
+            $method = Str::camel($attribute) . 'Created';
             return $this->attemptCall($method, $model, $model->{$attribute});
         });
     }
@@ -39,7 +40,7 @@ trait ObserveProperties
     public function updating(Model $model)
     {
         return $this->callOnDirty($model, function ($attribute) use ($model) {
-            $method = camel_case($attribute) . 'Updating';
+            $method = Str::camel($attribute) . 'Updating';
             return $this->attemptCall($method, $model, $model->getOriginal($attribute), $model->{$attribute});
         });
     }
@@ -52,7 +53,7 @@ trait ObserveProperties
     public function updated(Model $model)
     {
         return $this->callOnDirty($model, function ($attribute) use ($model) {
-            $method = camel_case($attribute) . 'Updated';
+            $method = Str::camel($attribute) . 'Updated';
             return $this->attemptCall($method, $model, $model->getOriginal($attribute), $model->{$attribute});
         });
     }
@@ -65,7 +66,7 @@ trait ObserveProperties
     public function saving(Model $model)
     {
         return $this->callOnClean($model, function ($attribute) use ($model) {
-            $method = camel_case($attribute) . 'Saving';
+            $method = Str::camel($attribute) . 'Saving';
             return $this->attemptCall($method, $model, $model->getOriginal($attribute), $model->{$attribute});
         });
     }
@@ -78,7 +79,7 @@ trait ObserveProperties
     public function saved(Model $model)
     {
         return $this->callOnClean($model, function ($attribute) use ($model) {
-            $method = camel_case($attribute) . 'Saved';
+            $method = Str::camel($attribute) . 'Saved';
             return $this->attemptCall($method, $model, $model->getOriginal($attribute), $model->{$attribute});
         });
     }
@@ -91,7 +92,7 @@ trait ObserveProperties
     public function deleting(Model $model)
     {
         return $this->callOnClean($model, function ($attribute) use ($model) {
-            $method = camel_case($attribute) . 'Deleting';
+            $method = Str::camel($attribute) . 'Deleting';
             return $this->attemptCall($method, $model, $model->{$attribute});
         });
     }
@@ -104,7 +105,7 @@ trait ObserveProperties
     public function deleted(Model $model)
     {
         return $this->callOnClean($model, function ($attribute) use ($model) {
-            $method = camel_case($attribute) . 'Deleted';
+            $method = Str::camel($attribute) . 'Deleted';
             return $this->attemptCall($method, $model, $model->{$attribute});
         });
     }
@@ -117,7 +118,7 @@ trait ObserveProperties
     public function restoring(Model $model)
     {
         return $this->callOnClean($model, function ($attribute) use ($model) {
-            $method = camel_case($attribute) . 'Restoring';
+            $method = Str::camel($attribute) . 'Restoring';
             return $this->attemptCall($method, $model, $model->{$attribute});
         });
     }
@@ -130,7 +131,7 @@ trait ObserveProperties
     public function restored(Model $model)
     {
         return $this->callOnClean($model, function ($attribute) use ($model) {
-            $method = camel_case($attribute) . 'Restored';
+            $method = Str::camel($attribute) . 'Restored';
             return $this->attemptCall($method, $model, $model->{$attribute});
         });
     }
